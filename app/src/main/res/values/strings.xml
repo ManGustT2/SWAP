@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SWAP</string>
+    <string name="title">Title</string>
+    <string name="episode_id">episode</string>
+    <string name="opening_crawl">opening crawl</string>
+    <string name="release_date">release date</string>
+
+</resources>

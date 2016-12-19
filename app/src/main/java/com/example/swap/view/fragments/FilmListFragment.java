@@ -1,0 +1,89 @@
+package com.example.swap.view.fragments;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.swap.R;
+import com.example.swap.base.BaseFragment;
+import com.example.swap.data.api.model.Film;
+import com.example.swap.view.activity.SWAPActivity;
+import com.example.swap.view.adapters.FilmRecycleViewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+/**
+ * Created by Администратор on 15.12.2016.
+ */
+public class FilmListFragment extends BaseFragment {
+
+    private SWAPActivity mSWAPActivity;
+    private RecyclerView mRecyclerView;
+    private FilmRecycleViewAdapter mFilmRecycleViewAdapter;
+
+    private ItemClickListener<Film> mItemClickListener = new ItemClickListener<Film>() {
+        @Override
+        public void onItemLongClicked(Film item) {
+
+        }
+
+        @Override
+        public void onItemClick(Film item) {
+           // mSWAPActivity.repleiceFragment();
+
+        }
+    };
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(getLayoutInflater(), container, false);
+        findUI(v);
+        mFilmRecycleViewAdapter.apply(mFilmList);
+        return v;
+    }
+
+    private List<Film> mFilmList = new ArrayList<>();
+
+    @Override
+    public int getLayoutInflater() {
+        return R.layout.fragment_films_list;
+    }
+
+    @Override
+    public void findUI(View rootView) {
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mFilmRecycleViewAdapter = new FilmRecycleViewAdapter(mItemClickListener);
+        mRecyclerView.setAdapter(mFilmRecycleViewAdapter);
+
+    }
+
+    // TODO: 17.12.2016 почему не можем обработать mItemClickListener
+
+    @Override
+    public void setupUI() {
+        restClient.getFilms().enqueue(new Callback<List<Film>>() {
+            @Override
+            public void onResponse(Call<List<Film>> call, Response<List<Film>> response) {
+                if(response.body() != null){
+                    mFilmList = response.body();
+                }else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Film>> call, Throwable t) {
+            }
+        });
+
+    }
+}
