@@ -9,8 +9,8 @@ import java.util.List;
 /**
  * Created by Администратор on 15.12.2016.
  */
-public abstract class BaceRecycleViewAdapter <Film, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
-    private List<Film> list;
+public abstract class BaceRecycleViewAdapter <T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+    private List<T> list;
 
     public BaceRecycleViewAdapter() {
         this.list = new ArrayList<>(0);
@@ -29,16 +29,16 @@ public abstract class BaceRecycleViewAdapter <Film, VH extends RecyclerView.View
         return list.size();
     }
 
-    public List<Film> getList() {
+    public List<T> getList() {
         return list;
     }
 
-    public void setList(List<Film> list) {
+    public void setList(List<T> list) {
         this.list = list;
     }
 
-    public abstract void update(List<Film> items);
+    public abstract void update(List<T> items);
 
-    public abstract void apply(List<Film> all);
+    public abstract void apply(List<T> all);
 
 }

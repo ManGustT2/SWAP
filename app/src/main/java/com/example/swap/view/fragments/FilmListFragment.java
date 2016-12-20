@@ -36,19 +36,9 @@ public class FilmListFragment extends BaseFragment {
 
         @Override
         public void onItemClick(Film item) {
-           // mSWAPActivity.repleiceFragment();
-
         }
     };
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(getLayoutInflater(), container, false);
-        findUI(v);
-        mFilmRecycleViewAdapter.apply(mFilmList);
-        return v;
-    }
 
     private List<Film> mFilmList = new ArrayList<>();
 
@@ -59,6 +49,7 @@ public class FilmListFragment extends BaseFragment {
 
     @Override
     public void findUI(View rootView) {
+        mFilmRecycleViewAdapter.apply(mFilmList);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mFilmRecycleViewAdapter = new FilmRecycleViewAdapter(mItemClickListener);
