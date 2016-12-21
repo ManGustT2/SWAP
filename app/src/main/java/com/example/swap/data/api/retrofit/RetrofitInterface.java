@@ -1,5 +1,4 @@
 package com.example.swap.data.api.retrofit;
-
 import com.example.swap.data.api.model.Film;
 import com.example.swap.data.api.model.FilmsResponse;
 
@@ -14,5 +13,5 @@ import retrofit2.http.GET;
 public interface RetrofitInterface {
 
     @GET("films/")
-    Call<List<Film>> getFilms();
+    Call<FilmsResponse> getFilms();
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
 import com.example.swap.data.api.model.Film;
+import com.example.swap.data.api.model.FilmsResponse;
 import com.example.swap.view.activity.SWAPActivity;
 import com.example.swap.view.adapters.FilmRecycleViewAdapter;
 
@@ -31,14 +32,12 @@ public class FilmListFragment extends BaseFragment {
     private ItemClickListener<Film> mItemClickListener = new ItemClickListener<Film>() {
         @Override
         public void onItemLongClicked(Film item) {
-
         }
 
         @Override
         public void onItemClick(Film item) {
         }
     };
-
 
     private List<Film> mFilmList = new ArrayList<>();
 
@@ -49,10 +48,10 @@ public class FilmListFragment extends BaseFragment {
 
     @Override
     public void findUI(View rootView) {
+        mFilmRecycleViewAdapter = new FilmRecycleViewAdapter(mItemClickListener);
         mFilmRecycleViewAdapter.apply(mFilmList);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mFilmRecycleViewAdapter = new FilmRecycleViewAdapter(mItemClickListener);
         mRecyclerView.setAdapter(mFilmRecycleViewAdapter);
 
     }
@@ -61,20 +60,18 @@ public class FilmListFragment extends BaseFragment {
 
     @Override
     public void setupUI() {
-        restClient.getFilms().enqueue(new Callback<List<Film>>() {
+        restClient.getFilms().enqueue(new Callback<FilmsResponse>() {
             @Override
-            public void onResponse(Call<List<Film>> call, Response<List<Film>> response) {
+            public void onResponse(Call<FilmsResponse> call, Response<FilmsResponse> response) {
                 if(response.body() != null){
-                    mFilmList = response.body();
+                    mFilmList = response.body().getResults();
                 }else {
-
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Film>> call, Throwable t) {
+            public void onFailure(Call<FilmsResponse> call, Throwable t) {
             }
         });
-
     }
 }

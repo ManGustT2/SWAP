@@ -6,10 +6,10 @@ import com.google.gson.annotations.SerializedName;
  * Created by Администратор on 14.12.2016.
  */
 public class Film {
-    @SerializedName("title") String title;
-    @SerializedName("episode_id") int episodeid;
-    @SerializedName("opening_crawl") String opening_crawl;
-    @SerializedName("release_date") String release_date;
+    private @SerializedName("title") String title;
+    private @SerializedName("episode_id") int episodeid;
+    private @SerializedName("opening_crawl") String opening_crawl;
+    private @SerializedName("release_date") String release_date;
 
     public String getRelease_date() {
         return release_date;
