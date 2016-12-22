@@ -1,8 +1,6 @@
 package com.example.swap.base;
-
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.List;
 

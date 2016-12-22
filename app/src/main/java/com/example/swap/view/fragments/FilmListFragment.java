@@ -53,9 +53,15 @@ public class FilmListFragment extends BaseFragment {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mFilmRecycleViewAdapter);
-
     }
 
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if (mFilmRecycleViewAdapter != null){
+//            mFilmRecycleViewAdapter.update(mFilmList);
+//        }
+//    }
     // TODO: 17.12.2016 почему не можем обработать mItemClickListener
 
     @Override
@@ -65,6 +71,7 @@ public class FilmListFragment extends BaseFragment {
             public void onResponse(Call<FilmsResponse> call, Response<FilmsResponse> response) {
                 if(response.body() != null){
                     mFilmList = response.body().getResults();
+                    mFilmRecycleViewAdapter.update(mFilmList);
                 }else {
                 }
             }
