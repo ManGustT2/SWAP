@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.example.swap.R;
-import com.example.swap.view.fragments.FilmListFragment;
+import com.example.swap.view.film.FilmListFragment;
 
 public class SWAPActivity extends AppCompatActivity {
     private static final String TAG = "TAG";

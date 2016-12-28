@@ -1,6 +1,5 @@
 package com.example.swap.view.adapters;
 
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import com.example.swap.R;
 import com.example.swap.base.BaceRecycleViewAdapter;
 import com.example.swap.data.api.model.Film;
-import com.example.swap.view.fragments.ItemClickListener;
+import com.example.swap.view.listeners.ItemClickListener;
 import java.util.List;
 
 /**
@@ -72,7 +71,7 @@ public class FilmRecycleViewAdapter extends BaceRecycleViewAdapter<Film, FilmRec
         // TODO: 17.12.2016 чтщ за параметры такие приходят, с какой целью ставим final
 
         void bind(final Film film) {
-            mEpisode.setText(film.getEpisode_id());
+            mEpisode.setText(film.getEpisode_id()+"");
             mTitle.setText(film.getTitle());
             mDateReleace.setText(film.getRelease_date());
             mOpenCrawl.setText(film.getOpening_crawl());
