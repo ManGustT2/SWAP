@@ -31,7 +31,7 @@ public class Film {
         return episodeid;
     }
 
-    public void setEpisode_id(String episode_id) {
+    public void setEpisode_id(int episode_id) {
         this.episodeid = episode_id;
     }
 

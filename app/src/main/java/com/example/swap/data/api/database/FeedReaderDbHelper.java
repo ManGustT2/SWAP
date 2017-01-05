@@ -1,4 +1,4 @@
-package com.example.swap.data.api;
+package com.example.swap.data.api.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,10 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.swap.data.api.model.Film;
-
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Created by Администратор on 25.12.2016.
  */
@@ -33,7 +31,8 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
                     FeadReaderContract.FeedEntry.COLUMN_NAME_EPISODE + TEXT_TYPE + COMMA_SEP +
                     FeadReaderContract.FeedEntry.COLUMN_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
                     FeadReaderContract.FeedEntry.COLUMN_NAME_CRAWL + TEXT_TYPE + COMMA_SEP +
-                    FeadReaderContract.FeedEntry.COLUMN_NAME_RELEASE +TEXT_TYPE + COMMA_SEP +" )";
+                    FeadReaderContract.FeedEntry.COLUMN_NAME_RELEASE +TEXT_TYPE +" )";
+
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + FeadReaderContract.FeedEntry.TABLE_NAME;
 
@@ -67,7 +66,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 Film f = new Film();
                 String id = (c.getString(c.getColumnIndex(FeadReaderContract.FeedEntry.COLUMN_NAME_EPISODE)));
-                f.setEpisode_id(id);
+                f.setEpisode_id(Integer.valueOf(id));
                 f.setTitle(c.getString(c.getColumnIndex(FeadReaderContract.FeedEntry.COLUMN_NAME_TITLE)));
                 f.setOpening_crawl(c.getString(c.getColumnIndex(FeadReaderContract.FeedEntry.COLUMN_NAME_CRAWL)));
                 f.setRelease_date(c.getString(c.getColumnIndex(FeadReaderContract.FeedEntry.COLUMN_NAME_RELEASE)));

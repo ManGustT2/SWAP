@@ -1,4 +1,4 @@
-package com.example.swap.data.api;
+package com.example.swap.data.api.database;
 
 import android.provider.BaseColumns;
 
