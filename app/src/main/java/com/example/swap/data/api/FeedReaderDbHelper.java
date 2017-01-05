@@ -44,6 +44,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     public void insertDB(List<Film> _films) {
         List<Film> film = new ArrayList<>();
         for (Film f : _films) {
+
             ContentValues newValues = new ContentValues();
             newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_EPISODE, f.getEpisode_id());
             newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_TITLE, f.getTitle());
