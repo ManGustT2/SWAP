@@ -14,6 +14,7 @@ import java.util.List;
  * Created by Администратор on 25.12.2016.
  */
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
+    public static final String LOG_TAG = FeedReaderDbHelper.class.getSimpleName();
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "FeedReader.db";
     private Film mFilms;
@@ -24,7 +25,6 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
-
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + FeadReaderContract.FeedEntry.TABLE_NAME + " (" +
                     FeadReaderContract.FeedEntry._ID + " INTEGER PRIMARY KEY," +
@@ -32,16 +32,19 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
                     FeadReaderContract.FeedEntry.COLUMN_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
                     FeadReaderContract.FeedEntry.COLUMN_NAME_CRAWL + TEXT_TYPE + COMMA_SEP +
                     FeadReaderContract.FeedEntry.COLUMN_NAME_RELEASE +TEXT_TYPE + COMMA_SEP +" )";
+    private static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS " + FeadReaderContract.FeedEntry.TABLE_NAME;
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
-        insertDB(mFilms, db);
     }
 
-    public void insertDB(Film film,SQLiteDatabase db){
+    public void insertDB(List<Film>, _films){
+        List<Film> film = new ArrayList<>();
+        for (Film f : _films){
         ContentValues newValues = new ContentValues();
-        newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_EPISODE, film.getEpisode_id());
+        newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_EPISODE, mFilms.getEpisode_id());
         newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_TITLE, film.getTitle());
         newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_CRAWL, film.getOpening_crawl());
         newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_RELEASE, film.getRelease_date());
@@ -49,8 +52,6 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     }
 
 
-    private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + FeadReaderContract.FeedEntry.TABLE_NAME;
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

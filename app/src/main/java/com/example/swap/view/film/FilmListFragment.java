@@ -42,10 +42,6 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
 
     @Override
     public void findUI(View rootView) {
-        FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getActivity());
-        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        sqLiteDatabase.close();
-        dbHelper.close();
         mFilmRecycleViewAdapter = new FilmRecycleViewAdapter(mItemClickListener);
         mFilmRecycleViewAdapter.apply(new ArrayList<Film>());
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
