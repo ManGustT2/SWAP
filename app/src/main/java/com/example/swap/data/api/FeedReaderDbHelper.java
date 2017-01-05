@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.swap.data.api.model.Film;
 
@@ -40,16 +41,22 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
-    public void insertDB(List<Film>, _films){
+    public void insertDB(List<Film> _films) {
         List<Film> film = new ArrayList<>();
-        for (Film f : _films){
-        ContentValues newValues = new ContentValues();
-        newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_EPISODE, mFilms.getEpisode_id());
-        newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_TITLE, film.getTitle());
-        newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_CRAWL, film.getOpening_crawl());
-        newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_RELEASE, film.getRelease_date());
-        db.insert(DATABASE_NAME, null, newValues);
-    }
+        for (Film f : _films) {
+            ContentValues newValues = new ContentValues();
+            newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_EPISODE, f.getEpisode_id());
+            newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_TITLE, f.getTitle());
+            newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_CRAWL, f.getOpening_crawl());
+            newValues.put(FeadReaderContract.FeedEntry.COLUMN_NAME_RELEASE, f.getRelease_date());
+
+            long id = getWritableDatabase().update(DATABASE_NAME, newValues, FeadReaderContract.FeedEntry.COLUMN_NAME_EPISODE + " LIKE ?", new String[]{String.valueOf(f.getEpisode_id())});
+            Log.d("KLYMENKO", "INSERT ID = " + id);
+            if(id == 0) {
+                getWritableDatabase().insert(DATABASE_NAME, null, newValues);
+            }
+        }
+        }
 
 
 
