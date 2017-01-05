@@ -2,6 +2,7 @@ package com.example.swap.data.api;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -59,7 +60,25 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         }
         }
 
-    @Override
+    public List<Film> getFilm() {
+        List<Film> lists = new ArrayList<>();
+        Cursor c = getReadableDatabase().query(DATABASE_NAME, null, null, null, null, null, null);
+        if (c != null) {
+            while (c.moveToNext()) {
+                Film f = new Film();
+                String id = (c.getString(c.getColumnIndex(FeadReaderContract.FeedEntry.COLUMN_NAME_EPISODE)));
+                f.setEpisode_id(id);
+                f.setTitle(c.getString(c.getColumnIndex(FeadReaderContract.FeedEntry.COLUMN_NAME_TITLE)));
+                f.setOpening_crawl(c.getString(c.getColumnIndex(FeadReaderContract.FeedEntry.COLUMN_NAME_CRAWL)));
+                f.setRelease_date(c.getString(c.getColumnIndex(FeadReaderContract.FeedEntry.COLUMN_NAME_RELEASE)));
+                lists.add(f);
+            }
+        }
+        return lists;
+    }
+
+
+        @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
