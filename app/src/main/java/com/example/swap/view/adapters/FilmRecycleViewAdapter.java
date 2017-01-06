@@ -11,6 +11,7 @@ import com.example.swap.R;
 import com.example.swap.base.BaceRecycleViewAdapter;
 import com.example.swap.data.api.model.Film;
 import com.example.swap.view.listeners.ItemClickListener;
+
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class FilmRecycleViewAdapter extends BaceRecycleViewAdapter<Film, FilmRec
     public FilmRecycleViewAdapter(ItemClickListener<Film> itemClickListener) {
         super();
         mItemClickListener = itemClickListener;
+//        setHasStableIds();
     }
 
     @Override
@@ -35,6 +37,11 @@ public class FilmRecycleViewAdapter extends BaceRecycleViewAdapter<Film, FilmRec
     public void onBindViewHolder(FilmRecycleViewAdapter.ViewHolder holder, int position) {
         holder.bind(getItem(position));
     }
+
+//    @Override
+//    public long getItemId(int position) {
+//        return super.getItemId(position);
+//    }
 
     @Override
     public void update(List<Film> items) {

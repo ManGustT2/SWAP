@@ -2,18 +2,16 @@ package com.example.swap.data.api.database;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.example.swap.data.api.model.Film;
-import java.util.ArrayList;
+
 import java.util.List;
 /**
  * Created by Администратор on 25.12.2016.
  */
-public class DBHelper extends SQLiteOpenHelper {
+public class DbHelper extends SQLiteOpenHelper implements IFilmRepo {
     private static final String DB_NAME = "swap.sqlite";
     private static final int DB_VERSION = 1;
 
@@ -23,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //    Table film column name
     private static final String EPISODE_ID = "id";    private static final String EPISODE_TITLE = "title";
 
-    public DBHelper(Context _context) {
+    public DbHelper(Context _context) {
         super(_context, DB_NAME, null, DB_VERSION);
     }
 
@@ -40,6 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    @Override
     public void insertFilms(List<Film> _list) {
         for(Film film : _list) {
             ContentValues cv = new ContentValues();

@@ -1,4 +1,5 @@
 package com.example.swap.view.film;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,6 +7,7 @@ import android.widget.Toast;
 
 import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
+import com.example.swap.data.api.database.DbHelper;
 import com.example.swap.data.api.model.Film;
 import com.example.swap.view.adapters.FilmRecycleViewAdapter;
 import com.example.swap.view.listeners.ItemClickListener;
@@ -17,11 +19,7 @@ import java.util.List;
  * Created by Администратор on 15.12.2016.
  */
 public class FilmListFragment extends BaseFragment implements IFilmListView {
-
-
-
     private FilmListPresenter mPresenter;
-
     private RecyclerView mRecyclerView;
     private FilmRecycleViewAdapter mFilmRecycleViewAdapter;
 
@@ -51,7 +49,7 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
 
     @Override
     public void setupUI() {
-        mPresenter = new FilmListPresenter(this, getActivity() );
+        mPresenter = new FilmListPresenter(this, new DbHelper(getContext()));
         mPresenter.getFilmList();
     }
 
@@ -67,6 +65,6 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
 
     @Override
     public void showError(String error) {
-        Toast.makeText(getActivity(), "Error: " + error, Toast.LENGTH_LONG).show();;
+        Toast.makeText(getActivity(), "Error: " + error, Toast.LENGTH_LONG).show();
     }
 }
