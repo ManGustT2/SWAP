@@ -18,6 +18,8 @@ import java.util.List;
  */
 public class FilmListFragment extends BaseFragment implements IFilmListView {
 
+
+
     private FilmListPresenter mPresenter;
 
     private RecyclerView mRecyclerView;
@@ -49,7 +51,7 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
 
     @Override
     public void setupUI() {
-        mPresenter = new FilmListPresenter(this);
+        mPresenter = new FilmListPresenter(this, getActivity() );
         mPresenter.getFilmList();
     }
 

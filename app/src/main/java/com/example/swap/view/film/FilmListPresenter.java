@@ -3,10 +3,8 @@ package com.example.swap.view.film;
 import android.content.Context;
 
 import com.example.swap.base.BasePresenter;
-import com.example.swap.data.api.database.FeedReaderDbHelper;
+import com.example.swap.data.api.database.DBHelper;
 import com.example.swap.data.api.model.FilmsResponse;
-import com.example.swap.data.api.retrofit.RestClient;
-import com.example.swap.data.api.retrofit.RetrofitInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,11 +15,11 @@ import retrofit2.Response;
  */
 public class FilmListPresenter extends BasePresenter {
     private IFilmListView mView;
-    private FeedReaderDbHelper mHelper;
+    private DBHelper mHelper;
 
     public FilmListPresenter(IFilmListView _view, Context _context) {
         mView = _view;
-        mHelper = new FeedReaderDbHelper(_context);
+        mHelper = new DBHelper(_context);
 
     }
 
@@ -32,7 +30,7 @@ public class FilmListPresenter extends BasePresenter {
                 if(response.body() == null || response.body().getResults().isEmpty()) {
                     mView.showEmptyList();
                 } else {
-                    mView.showListFilms(response.body().getResults());
+                    mHelper.insertFilms(response.body().getResults());
                     mView.showListFilms(response.body().getResults());
                 }
             }
