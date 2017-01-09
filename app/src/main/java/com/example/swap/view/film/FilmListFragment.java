@@ -7,7 +7,6 @@ import android.widget.Toast;
 
 import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
-import com.example.swap.data.api.database.DbHelper;
 import com.example.swap.data.api.model.Film;
 import com.example.swap.view.adapters.FilmRecycleViewAdapter;
 import com.example.swap.view.listeners.ItemClickListener;
@@ -49,7 +48,7 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
 
     @Override
     public void setupUI() {
-        mPresenter = new FilmListPresenter(this, new DbHelper(getContext()));
+        mPresenter = new FilmListPresenter(this, getActivity());
         mPresenter.getFilmList();
     }
 

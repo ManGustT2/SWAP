@@ -1,7 +1,9 @@
 package com.example.swap.view.film;
 
+import android.content.Context;
+
 import com.example.swap.base.BasePresenter;
-import com.example.swap.data.api.database.IFilmRepo;
+import com.example.swap.data.api.database.DbHelper;
 import com.example.swap.data.api.model.FilmsResponse;
 
 import retrofit2.Call;
@@ -13,23 +15,24 @@ import retrofit2.Response;
  */
 public class FilmListPresenter extends BasePresenter {
     private IFilmListView mView;
-    private IFilmRepo mIFilmRepo;
+    private DbHelper mHelper;
 
-    public FilmListPresenter(IFilmListView _view, IFilmRepo IFilmRepo) {
+    public FilmListPresenter(IFilmListView _view, Context _context) {
         mView = _view;
-        mIFilmRepo = IFilmRepo;
+        mHelper = new DbHelper(_context);
 
     }
 
     public void getFilmList() {
+        mView.showListFilms(mHelper.getListFilm());
         restClient.getFilms().enqueue(new Callback<FilmsResponse>() {
             @Override
             public void onResponse(Call<FilmsResponse> call, Response<FilmsResponse> response) {
                 if(response.body() == null || response.body().getResults().isEmpty()) {
                     mView.showEmptyList();
                 } else {
-                    mIFilmRepo.insertFilms(response.body().getResults());
-                    mView.showListFilms(response.body().getResults());
+                    mHelper.insertFilms(response.body().getResults());
+                    mView.showListFilms(mHelper.getListFilm());
                 }
             }
 

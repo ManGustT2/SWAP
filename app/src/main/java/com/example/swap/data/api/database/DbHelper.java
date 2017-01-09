@@ -2,11 +2,13 @@ package com.example.swap.data.api.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.swap.data.api.model.Film;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by Администратор on 25.12.2016.
@@ -19,7 +21,8 @@ public class DbHelper extends SQLiteOpenHelper implements IFilmRepo {
     private static final String TABLE_EPISODE = "films";
 
     //    Table film column name
-    private static final String EPISODE_ID = "id";    private static final String EPISODE_TITLE = "title";
+    private static final String EPISODE_ID = "id";
+    private static final String EPISODE_TITLE = "title";
 
     public DbHelper(Context _context) {
         super(_context, DB_NAME, null, DB_VERSION);
@@ -40,12 +43,30 @@ public class DbHelper extends SQLiteOpenHelper implements IFilmRepo {
 
     @Override
     public void insertFilms(List<Film> _list) {
-        for(Film film : _list) {
+        getWritableDatabase().insert(TABLE_EPISODE, null, null);
+        for (Film film : _list) {
             ContentValues cv = new ContentValues();
             cv.put(EPISODE_ID, film.getEpisode_id());
             cv.put(EPISODE_TITLE, film.getTitle());
 
             getWritableDatabase().insert(TABLE_EPISODE, null, cv);
         }
+    }
+
+    public List<Film> getListFilm() {
+
+        List<Film> films = new ArrayList<>();
+        Cursor c = getReadableDatabase().query(TABLE_EPISODE, null, null, null, null, null,null);
+        if(c != null){
+            while (c.moveToNext()){
+               Film f = new Film();
+                f.setEpisode_id(c.getColumnIndex(EPISODE_ID));
+                f.setTitle(c.getString(c.getColumnIndex(EPISODE_TITLE)));
+
+                films.add(f);
+            }
+        }
+
+        return films;
     }
 }
