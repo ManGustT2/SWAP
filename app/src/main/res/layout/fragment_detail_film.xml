@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/llItemContainer"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="16dp">
+
+    <TextView
+        android:id="@+id/titleFDF"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/title"
+        android:textSize="18sp"
+        android:layout_marginBottom="6dp"
+        android:typeface="serif"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/release_dateFDF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/release_date"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/episodeFDF"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/episode_id"
+        android:textSize="18sp"
+        android:layout_marginBottom="6dp"
+        android:typeface="serif"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/opening_crawlFDF"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/opening_crawl"
+        android:textSize="18sp"
+        android:layout_marginBottom="6dp"
+        android:typeface="serif"
+        android:textStyle="italic"/>
+
+</LinearLayout>

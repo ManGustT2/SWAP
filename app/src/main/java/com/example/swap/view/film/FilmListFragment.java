@@ -8,7 +8,9 @@ import android.widget.Toast;
 import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
 import com.example.swap.data.api.model.Film;
+import com.example.swap.view.activity.SWAPActivity;
 import com.example.swap.view.adapters.FilmRecycleViewAdapter;
+import com.example.swap.view.fragments.DetailListFragment;
 import com.example.swap.view.listeners.ItemClickListener;
 
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
     private FilmListPresenter mPresenter;
     private RecyclerView mRecyclerView;
     private FilmRecycleViewAdapter mFilmRecycleViewAdapter;
+    private SWAPActivity mSWAPActivity;
 
     private ItemClickListener<Film> mItemClickListener = new ItemClickListener<Film>() {
         @Override
@@ -29,6 +32,7 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
 
         @Override
         public void onItemClick(Film item) {
+            mSWAPActivity.repleiceFragment(DetailListFragment.newInstance(item.getEpisode_id()));
         }
     };
 

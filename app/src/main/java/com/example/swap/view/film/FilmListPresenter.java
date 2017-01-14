@@ -3,7 +3,7 @@ package com.example.swap.view.film;
 import android.content.Context;
 
 import com.example.swap.base.BasePresenter;
-import com.example.swap.data.api.database.DbHelper;
+import com.example.swap.data.api.database.DBHelper;
 import com.example.swap.data.api.model.FilmsResponse;
 
 import retrofit2.Call;
@@ -15,11 +15,11 @@ import retrofit2.Response;
  */
 public class FilmListPresenter extends BasePresenter {
     private IFilmListView mView;
-    private DbHelper mHelper;
+    private DBHelper mHelper;
 
     public FilmListPresenter(IFilmListView _view, Context _context) {
         mView = _view;
-        mHelper = new DbHelper(_context);
+        mHelper = new DBHelper(_context);
 
     }
 

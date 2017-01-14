@@ -6,14 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.swap.data.api.database.DbHelper;
+import com.example.swap.data.api.database.DBHelper;
 
 /**
  * Created by Администратор on 14.12.2016.
  */
 public abstract class BaseFragment extends Fragment{
 
-    DbHelper mDbHelper;
+    DBHelper mDbHelper;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public abstract class BaseFragment extends Fragment{
         View rootView = inflater.inflate(getLayoutInflater(), container, false);
         findUI(rootView);
         setupUI();
-        mDbHelper = new DbHelper(getContext());
+        mDbHelper = new DBHelper(getContext());
         return rootView;
     }
 
