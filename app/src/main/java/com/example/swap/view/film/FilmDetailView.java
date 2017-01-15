@@ -1,8 +1,11 @@
 package com.example.swap.view.film;
 
+import com.example.swap.data.api.model.Film;
+
 /**
  * Created by Администратор on 14.01.2017.
  */
 public interface FilmDetailView {
-    void showDetailFilm();
+    void showDetailFilm(Film item);
+    int getArgs();
 }

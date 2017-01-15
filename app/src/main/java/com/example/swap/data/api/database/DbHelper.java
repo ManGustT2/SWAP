@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Администратор on 25.12.2016.
  */
-public class DbHelper extends SQLiteOpenHelper implements IFilmRepo {
+public class DBHelper extends SQLiteOpenHelper implements IFilmRepo {
     private static final String DB_NAME = "swap.sqlite";
     private static final int DB_VERSION = 1;
 
@@ -24,7 +24,7 @@ public class DbHelper extends SQLiteOpenHelper implements IFilmRepo {
     private static final String EPISODE_ID = "id";
     private static final String EPISODE_TITLE = "title";
 
-    public DbHelper(Context _context) {
+    public DBHelper(Context _context) {
         super(_context, DB_NAME, null, DB_VERSION);
     }
 
@@ -68,5 +68,20 @@ public class DbHelper extends SQLiteOpenHelper implements IFilmRepo {
         }
 
         return films;
+    }
+
+    public Film getDetailFilm(int id){
+        SQLiteDatabase database = this.getReadableDatabase();
+
+        Cursor cursor = database.query(TABLE_EPISODE, new String[] { EPISODE_ID, EPISODE_TITLE}, EPISODE_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null);
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+
+        Film film = new Film();
+        film.setEpisode_id(cursor.getColumnIndex(EPISODE_ID));
+        film.setTitle(cursor.getString(cursor.getColumnIndex(EPISODE_TITLE)));
+        return film;
     }
 }

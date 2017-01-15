@@ -75,7 +75,6 @@ public class FilmRecycleViewAdapter extends BaceRecycleViewAdapter<Film, FilmRec
             linearLayout = (LinearLayout) itemView.findViewById(R.id.llItemContainer);
         }
 
-        // TODO: 17.12.2016 чтщ за параметры такие приходят, с какой целью ставим final
 
         void bind(final Film film) {
             mEpisode.setText(film.getEpisode_id()+"");

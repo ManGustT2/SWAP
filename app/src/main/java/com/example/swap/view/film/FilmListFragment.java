@@ -48,6 +48,7 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mFilmRecycleViewAdapter);
+
     }
 
     @Override

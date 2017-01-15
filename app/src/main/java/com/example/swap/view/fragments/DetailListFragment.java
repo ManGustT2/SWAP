@@ -2,11 +2,12 @@ package com.example.swap.view.fragments;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
+import com.example.swap.data.api.model.Film;
+import com.example.swap.view.film.FilmDetailPresenter;
 import com.example.swap.view.film.FilmDetailView;
 
 /**
@@ -18,7 +19,7 @@ public class DetailListFragment extends BaseFragment implements FilmDetailView{
     private TextView mDateReleace;
     private int mEpisode;
     private TextView mOpenCrawl;
-    private LinearLayout linearLayout;
+    private FilmDetailPresenter mPresenter;
 
 
     @Override
@@ -50,15 +51,16 @@ public class DetailListFragment extends BaseFragment implements FilmDetailView{
     }
 
 
-
     @Override
     public void setupUI() {
-
-
+        mPresenter = new FilmDetailPresenter(this, getActivity());
+        mPresenter.getDetailFilm();
     }
 
     @Override
-    public void showDetailFilm() {
-
+    public void showDetailFilm(Film item) {
+        mTitle.setText(item.getTitle());
+        mDateReleace.setText(item.getRelease_date());
+        mOpenCrawl.setText(item.getOpening_crawl());
     }
 }
