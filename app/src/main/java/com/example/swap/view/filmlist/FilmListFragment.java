@@ -1,4 +1,4 @@
-package com.example.swap.view.film;
+package com.example.swap.view.filmlist;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,7 @@ import com.example.swap.base.BaseFragment;
 import com.example.swap.data.api.model.Film;
 import com.example.swap.view.activity.SWAPActivity;
 import com.example.swap.view.adapters.FilmRecycleViewAdapter;
-import com.example.swap.view.fragments.DetailListFragment;
+import com.example.swap.view.filmdetail.DetailListFragment;
 import com.example.swap.view.listeners.ItemClickListener;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
 
         @Override
         public void onItemClick(Film item) {
-            mSWAPActivity.repleiceFragment(DetailListFragment.newInstance(item.getEpisode_id()));
+            mSWAPActivity.replaceFragment(DetailListFragment.newInstance(item.getEpisode_id()));
         }
     };
 

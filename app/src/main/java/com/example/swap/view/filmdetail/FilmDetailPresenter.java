@@ -1,10 +1,9 @@
-package com.example.swap.view.film;
+package com.example.swap.view.filmdetail;
 
 import android.content.Context;
 
 import com.example.swap.base.BasePresenter;
 import com.example.swap.data.api.database.DBHelper;
-import com.example.swap.view.fragments.DetailListFragment;
 
 /**
  * Created by Администратор on 09.01.2017.

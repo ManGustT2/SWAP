@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.example.swap.R;
-import com.example.swap.view.film.FilmListFragment;
+import com.example.swap.view.filmlist.FilmListFragment;
 
 public class SWAPActivity extends AppCompatActivity {
     private static final String TAG = "TAG";
@@ -26,10 +26,10 @@ public class SWAPActivity extends AppCompatActivity {
         Fragment fragment = mFragmentManager.findFragmentById(R.id.container);
 
         if (fragment == null)
-            repleiceFragment(new FilmListFragment());
+            replaceFragment(new FilmListFragment());
     }
 
-    public void repleiceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         mFragmentManager.beginTransaction()
                 .add(R.id.container, fragment)
                 .commit();

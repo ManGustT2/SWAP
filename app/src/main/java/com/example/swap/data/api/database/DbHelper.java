@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Администратор on 25.12.2016.
  */
-public class DBHelper extends SQLiteOpenHelper implements IFilmRepo {
+public class DBHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "swap.sqlite";
     private static final int DB_VERSION = 1;
 
@@ -41,23 +41,21 @@ public class DBHelper extends SQLiteOpenHelper implements IFilmRepo {
         onCreate(db);
     }
 
-    @Override
     public void insertFilms(List<Film> _list) {
         getWritableDatabase().insert(TABLE_EPISODE, null, null);
         for (Film film : _list) {
             ContentValues cv = new ContentValues();
             cv.put(EPISODE_ID, film.getEpisode_id());
             cv.put(EPISODE_TITLE, film.getTitle());
-
             getWritableDatabase().insert(TABLE_EPISODE, null, cv);
         }
     }
 
     public List<Film> getListFilm() {
 
-        List<Film> films = new ArrayList<>();
-        Cursor c = getReadableDatabase().query(TABLE_EPISODE, null, null, null, null, null,null);
-        if(c != null){
+            List<Film> films = new ArrayList<>();
+            Cursor c = getReadableDatabase().query(TABLE_EPISODE, null, null, null, null, null,null);
+            if(c != null){
             while (c.moveToNext()){
                Film f = new Film();
                 f.setEpisode_id(c.getColumnIndex(EPISODE_ID));
@@ -74,7 +72,7 @@ public class DBHelper extends SQLiteOpenHelper implements IFilmRepo {
         SQLiteDatabase database = this.getReadableDatabase();
 
         Cursor cursor = database.query(TABLE_EPISODE, new String[] { EPISODE_ID, EPISODE_TITLE}, EPISODE_ID + "=?",
-                new String[]{String.valueOf(id)}, null, null, null);
+                new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null){
             cursor.moveToFirst();
         }

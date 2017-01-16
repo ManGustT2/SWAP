@@ -1,4 +1,4 @@
-package com.example.swap.view.fragments;
+package com.example.swap.view.filmdetail;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,8 +7,6 @@ import android.widget.TextView;
 import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
 import com.example.swap.data.api.model.Film;
-import com.example.swap.view.film.FilmDetailPresenter;
-import com.example.swap.view.film.FilmDetailView;
 
 /**
  * Created by Администратор on 15.12.2016.
