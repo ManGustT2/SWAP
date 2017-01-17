@@ -42,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void insertFilms(List<Film> _list) {
-        getWritableDatabase().insert(TABLE_EPISODE, null, null);
+        getWritableDatabase().delete(TABLE_EPISODE, null, null);
         for (Film film : _list) {
             ContentValues cv = new ContentValues();
             cv.put(EPISODE_ID, film.getEpisode_id());

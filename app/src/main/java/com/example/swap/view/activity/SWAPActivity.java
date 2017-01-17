@@ -2,6 +2,7 @@ package com.example.swap.view.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -26,12 +27,14 @@ public class SWAPActivity extends AppCompatActivity {
         Fragment fragment = mFragmentManager.findFragmentById(R.id.container);
 
         if (fragment == null)
-            replaceFragment(new FilmListFragment());
+            replaceFragment(new FilmListFragment(), false);
     }
 
-    public void replaceFragment(Fragment fragment) {
-        mFragmentManager.beginTransaction()
-                .add(R.id.container, fragment)
-                .commit();
+    public void replaceFragment(Fragment fragment, boolean isBackStack) {
+        FragmentTransaction transaction = mFragmentManager.beginTransaction()
+                .replace(R.id.container, fragment);
+        if(isBackStack)
+            transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
