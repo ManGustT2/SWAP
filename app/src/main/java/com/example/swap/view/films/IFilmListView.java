@@ -1,4 +1,4 @@
-package com.example.swap.view.filmlist;
+package com.example.swap.view.films;
 
 import com.example.swap.data.api.model.Film;
 

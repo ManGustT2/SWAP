@@ -1,4 +1,4 @@
-package com.example.swap.view.filmdetail;
+package com.example.swap.view.films;
 
 import android.content.Context;
 

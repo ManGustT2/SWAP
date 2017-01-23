@@ -1,4 +1,4 @@
-package com.example.swap.view.filmlist;
+package com.example.swap.view.films;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,6 @@ import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
 import com.example.swap.data.api.model.Film;
 import com.example.swap.view.adapters.FilmRecycleViewAdapter;
-import com.example.swap.view.filmdetail.DetailListFragment;
 import com.example.swap.view.listeners.ItemClickListener;
 
 import java.util.ArrayList;

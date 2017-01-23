@@ -1,4 +1,4 @@
-package com.example.swap.view.filmdetail;
+package com.example.swap.view.films;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +11,7 @@ import com.example.swap.data.api.model.Film;
 /**
  * Created by Администратор on 15.12.2016.
  */
-public class DetailListFragment extends BaseFragment implements FilmDetailView{
+public class DetailListFragment extends BaseFragment implements FilmDetailView {
     private static final String TAG = "DetailListFragment";
     private TextView mTitle;
     private TextView mDateReleace;
