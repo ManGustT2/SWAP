@@ -32,7 +32,7 @@ public class SWAPActivity extends AppCompatActivity {
 //                .withActivity(this)
 //                .withToolbar(mToolbar)
 //                .withActionBarDrawerToggle(true)
-//                .withHeader(R.layout.drawer_header)
+//                .withHeader(R.layout.nav_header_main)
 //                .addDrawerItems(
 //                        new PrimaryDrawerItem().withName(R.string.drawer_people),
 //                        new PrimaryDrawerItem().withName(R.string.drawer_planets),

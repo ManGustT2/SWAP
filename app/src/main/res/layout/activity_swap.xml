@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<android.support.design.widget.LinerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context=".view.activity.SWAPActivity">
 
@@ -31,9 +32,21 @@
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        layout="@layout/app_bar_name" />
+        layout="@layout/app_bar_main" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/actyvity_main_drawer">
+
+    </android.support.design.widget.NavigationView>
 
 
 
-</android.support.design.widget.CoordinatorLayout>
+
+</android.support.design.widget.LinerLayout>
 
