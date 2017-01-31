@@ -1,21 +1,30 @@
 package com.example.swap.view.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.example.swap.R;
 import com.example.swap.view.films.FilmListFragment;
 import com.mikepenz.materialdrawer.Drawer;
 
-public class SWAPActivity extends AppCompatActivity {
+public class SWAPActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "TAG";
     private FragmentManager mFragmentManager;
     private Toolbar mToolbar;
     private Drawer.Result drawerResult = null;
+    private ActionBarDrawerToggle mBarDrawerToggle;
+    private NavigationView mNavigationView;
+    private DrawerLayout mDrawerLayout;
 
 
 
@@ -25,78 +34,53 @@ public class SWAPActivity extends AppCompatActivity {
         setContentView(R.layout.activity_swap);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         setSupportActionBar(mToolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//        drawerResult = new Drawer()
-//                .withActivity(this)
-//                .withToolbar(mToolbar)
-//                .withActionBarDrawerToggle(true)
-//                .withHeader(R.layout.nav_header_main)
-//                .addDrawerItems(
-//                        new PrimaryDrawerItem().withName(R.string.drawer_people),
-//                        new PrimaryDrawerItem().withName(R.string.drawer_planets),
-//                        new PrimaryDrawerItem().withName(R.string.drawer_item_films),
-//                        new PrimaryDrawerItem().withName(R.string.drawer_item_species),
-//                        new PrimaryDrawerItem().withName(R.string.drawer_item_vehicles),
-//                        new PrimaryDrawerItem().withName(R.string.OPEN_STARSHIPS)
-//                )
-//                .withOnDrawerListener(new Drawer.OnDrawerListener() {
-//                    @Override
-//                    public void onDrawerOpened(View drawerView) {
-//                        InputMethodManager inputMethodManager = (InputMethodManager)SWAPActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
-//                        inputMethodManager.hideSoftInputFromWindow(SWAPActivity.this.getCurrentFocus().getWindowToken(), 0);
-//                    }
-//
-//                    @Override
-//                    public void onDrawerClosed(View drawerView) {
-//
-//                    }
-//                })
-//                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-//                        if (drawerItem instanceof Nameable){
-//                            Toast.makeText(SWAPActivity.this, SWAPActivity.this.getString(((Nameable) drawerItem).getNameRes()), Toast.LENGTH_LONG).show();
-//                        }
-//                        if(drawerItem instanceof Badgeable){
-//                            Badgeable badgeable = (Badgeable) drawerItem;
-//                            if (badgeable.getBadge() != null) {
-//                                try {
-//                                    int badge = Integer.valueOf(badgeable.getBadge());
-//                                    if (badge > 0) {
-//                                        drawerResult.updateBadge(String.valueOf(badge -1), position);
-//
-//                                    }
-//                                } catch (Exception e) {
-//                                    Log.d("text", "Не нажимайте на бейдж содержащий плюс! :");
-//                                }
-//                            }
-//                        }
-//                    }
-//                })
-//                .withOnDrawerItemLongClickListener(new Drawer.OnDrawerItemLongClickListener() {
-//                    @Override
-//                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
-//                        if(drawerItem instanceof SecondaryDrawerItem) {
-//                            Toast.makeText(SWAPActivity.this, SWAPActivity.this.getString(((SecondaryDrawerItem) drawerItem).getNameRes()),Toast.LENGTH_LONG).show();
-//                        }
-//                        return false;
-//                    }
-//                })
-//                .build();
+        getSupportActionBar().setHomeButtonEnabled(true);
+        mNavigationView.setNavigationItemSelectedListener(this);
+        mBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.openDrawer, R.string.closeDrawer);
+        mDrawerLayout.addDrawerListener(mBarDrawerToggle);
+        mBarDrawerToggle.syncState();
+        mBarDrawerToggle.setDrawerIndicatorEnabled(true);
+        mBarDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        getSupportFragmentManager()
+                .addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                mBarDrawerToggle.setDrawerIndicatorEnabled(getSupportFragmentManager().getBackStackEntryCount() == 0);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(getSupportFragmentManager().getBackStackEntryCount() > 0);
+                mBarDrawerToggle.syncState();
+            }
+        });
 
         mFragmentManager = getSupportFragmentManager();
 
-        Fragment fragment = mFragmentManager.findFragmentById(R.id.container);
+        Fragment fragment = mFragmentManager.findFragmentById(R.id.frame);
 
         if (fragment == null)
             replaceFragment(new FilmListFragment(), false);
     }
 
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        drawerResult.closeDrawer();
+        return true;
+    }
+
+
     public void replaceFragment(Fragment fragment, boolean isBackStack) {
         FragmentTransaction transaction = mFragmentManager.beginTransaction()
-                .replace(R.id.container, fragment);
+                .replace(R.id.frame, fragment);
         if(isBackStack)
             transaction.addToBackStack(null);
         transaction.commit();
