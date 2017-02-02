@@ -15,13 +15,11 @@ import android.view.View;
 
 import com.example.swap.R;
 import com.example.swap.view.films.FilmListFragment;
-import com.mikepenz.materialdrawer.Drawer;
 
 public class SWAPActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private static final String TAG = "TAG";
     private FragmentManager mFragmentManager;
     private Toolbar mToolbar;
-    private Drawer.Result drawerResult = null;
     private ActionBarDrawerToggle mBarDrawerToggle;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
@@ -73,7 +71,6 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        drawerResult.closeDrawer();
         return true;
     }
 
@@ -87,10 +84,5 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void onBackPressed(){
-        if (drawerResult.isDrawerOpen()) {
-            drawerResult.closeDrawer();
-        } else {
-            super.onBackPressed();
-        }
     }
 }

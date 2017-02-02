@@ -14,9 +14,6 @@ import com.example.swap.view.listeners.ItemClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Администратор on 15.12.2016.
- */
 public class FilmListFragment extends BaseFragment implements IFilmListView {
     private FilmListPresenter mPresenter;
     private RecyclerView mRecyclerView;
@@ -35,7 +32,7 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
 
     @Override
     public int getLayoutInflater() {
-        return R.layout.fragment_films_list;
+        return R.layout.fragment_list;
     }
 
     @Override

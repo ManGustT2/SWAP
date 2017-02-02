@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.swap.base.BasePresenter;
 import com.example.swap.data.api.database.DBHelper;
-import com.example.swap.data.api.model.FilmsResponse;
+import com.example.swap.data.api.model.response.FilmsResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

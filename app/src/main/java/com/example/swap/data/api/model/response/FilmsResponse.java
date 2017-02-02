@@ -1,4 +1,6 @@
-package com.example.swap.data.api.model;
+package com.example.swap.data.api.model.response;
+
+import com.example.swap.data.api.model.Film;
 
 import java.util.List;
 

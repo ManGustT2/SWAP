@@ -4,21 +4,31 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="@string/drawer_people" />
+            android:title="@string/drawer_people"
+            android:background="@color/colorBlack"/>
         <item
             android:id="@+id/nav_photos"
-            android:title="@string/drawer_planets" />
+            android:title="@string/drawer_planets"
+            android:background="@color/colorBlack"/>
+        />
+
         <item
             android:id="@+id/nav_movies"
-            android:title="@string/drawer_item_films" />
+            android:title="@string/drawer_item_films"
+            android:background="@color/colorBlack"/>
+        />
 
         <item
             android:id="@+id/nav_notifications"
-            android:title="@string/drawer_item_species" />
+            android:title="@string/drawer_item_species"
+            android:background="@color/colorBlack"/>
+        />
 
         <item
             android:id="@+id/nav_settings"
-            android:title="@string/drawer_item_vehicles" />
+            android:title="@string/drawer_item_vehicles"
+            android:background="@color/colorBlack"/>
+        />
     </group>
 
 </menu>
