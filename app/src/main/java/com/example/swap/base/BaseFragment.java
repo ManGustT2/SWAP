@@ -8,16 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.swap.data.api.database.DBHelper;
+import com.example.swap.data.api.database.DbHelper;
 import com.example.swap.view.activity.SWAPActivity;
 
 /**
  * Created by Администратор on 14.12.2016.
  */
-public abstract class BaseFragment extends Fragment{
-
-    DBHelper mDbHelper;
+public abstract class BaseFragment<T> extends Fragment {
     protected SWAPActivity mSWAPActivity;
+    DbHelper mDbHelper;
+    private T mPresenter;
+
+    public T getPresenter() {
+        return mPresenter;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public abstract class BaseFragment extends Fragment{
 
         findUI(rootView);
         setupUI();
-        mDbHelper = new DBHelper(getContext());
+        mDbHelper = new DbHelper(getContext());
         return rootView;
     }
 

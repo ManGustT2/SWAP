@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Администратор on 25.12.2016.
  */
-public class DBHelper extends SQLiteOpenHelper {
+public class DbHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "swap.sqlite";
     private static final int DB_VERSION = 1;
 
@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String EPISODE_ID = "id";
     private static final String EPISODE_TITLE = "title";
 
-    public DBHelper(Context _context) {
+    public DbHelper(Context _context) {
         super(_context, DB_NAME, null, DB_VERSION);
     }
 

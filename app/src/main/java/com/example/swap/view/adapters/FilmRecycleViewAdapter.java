@@ -65,6 +65,7 @@ public class FilmRecycleViewAdapter extends BaceRecycleViewAdapter<Film, FilmRec
         private TextView mEpisode;
         private TextView mOpenCrawl;
         private LinearLayout linearLayout;
+        private View mItemView;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -73,14 +74,16 @@ public class FilmRecycleViewAdapter extends BaceRecycleViewAdapter<Film, FilmRec
             mDateReleace = (TextView) itemView.findViewById(R.id.release_date);
             mOpenCrawl = (TextView) itemView.findViewById(R.id.opening_crawl);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.llItemContainer);
+            mItemView = itemView;
         }
 
 
         void bind(final Film film) {
-            mEpisode.setText(film.getEpisode_id()+"");
+            mEpisode.setText(String.valueOf(film.getEpisode_id()));
             mTitle.setText(film.getTitle());
             mDateReleace.setText(film.getRelease_date());
             mOpenCrawl.setText(film.getOpening_crawl());
+//            mItemView.setOnClickListener();
             linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

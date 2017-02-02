@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FilmListFragment extends BaseFragment implements IFilmListView {
-    private FilmListPresenter mPresenter;
-    private RecyclerView mRecyclerView;
     private FilmRecycleViewAdapter mFilmRecycleViewAdapter;
 
     private ItemClickListener<Film> mItemClickListener = new ItemClickListener<Film>() {
@@ -39,16 +37,16 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
     public void findUI(View rootView) {
         mFilmRecycleViewAdapter = new FilmRecycleViewAdapter(mItemClickListener);
         mFilmRecycleViewAdapter.apply(new ArrayList<Film>());
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(mFilmRecycleViewAdapter);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(mFilmRecycleViewAdapter);
 
     }
 
     @Override
     public void setupUI() {
-        mPresenter = new FilmListPresenter(this, getActivity());
-        mPresenter.getFilmList();
+        FilmListPresenter presenter = new FilmListPresenter(this, getActivity());
+        presenter.getFilmList();
     }
 
     @Override
@@ -63,6 +61,6 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
 
     @Override
     public void showError(String error) {
-        Toast.makeText(getActivity(), "Error: " + error, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), String.format("Error: %s", error), Toast.LENGTH_LONG).show();
     }
 }

@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/llItemContainer"
-              android:orientation="vertical"
+<LinearLayout android:id="@+id/llItemContainer"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:orientation="vertical"
               android:padding="16dp">
 
     <TextView
         android:id="@+id/title"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/title"
-        android:textSize="18sp"
         android:layout_marginBottom="6dp"
+        android:text="@string/title"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textSize="18sp"
+        android:textStyle="italic"
         android:typeface="serif"
-        android:textStyle="italic"/>
+        tools:text="title"/>
 
     <TextView
         android:id="@+id/release_date"
@@ -26,20 +30,20 @@
         android:id="@+id/episode"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginBottom="6dp"
         android:text="@string/episode_id"
         android:textSize="18sp"
-        android:layout_marginBottom="6dp"
-        android:typeface="serif"
-        android:textStyle="italic"/>
+        android:textStyle="italic"
+        android:typeface="serif"/>
 
     <TextView
         android:id="@+id/opening_crawl"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginBottom="6dp"
         android:text="@string/opening_crawl"
         android:textSize="18sp"
-        android:layout_marginBottom="6dp"
-        android:typeface="serif"
-        android:textStyle="italic"/>
+        android:textStyle="italic"
+        android:typeface="serif"/>
 
 </LinearLayout>

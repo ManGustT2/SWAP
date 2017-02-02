@@ -13,7 +13,7 @@ import retrofit2.http.GET;
 /**
  * Created by Администратор on 14.12.2016.
  */
-public interface RetrofitInterface {
+public interface SWApi {
 
     @GET("films/")
     Call<FilmsResponse> getFilms();

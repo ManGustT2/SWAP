@@ -15,7 +15,7 @@ import android.view.View;
 
 import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
-import com.example.swap.view.films.FilmListFragment;
+import com.example.swap.view.people.PeopleFragment;
 
 public class SWAPActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ISwapView{
     private static final String TAG = "TAG";
@@ -64,11 +64,10 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
 
         Fragment fragment = mFragmentManager.findFragmentById(R.id.frame);
 
-        if (fragment == null)
-            replaceFragment(new FilmListFragment(), false);
+        if (fragment == null) {
+            replaceFragment(new PeopleFragment(), false);
+        }
     }
-
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -76,8 +75,6 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
         mSwapPresenter.onMenuItemClick(id);
         return true;
     }
-
-
 
 
     public void replaceFragment(Fragment fragment, boolean isBackStack) {

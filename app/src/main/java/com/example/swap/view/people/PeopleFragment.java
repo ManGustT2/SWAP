@@ -13,12 +13,9 @@ import java.util.List;
 /**
  * Created by Администратор on 26.01.2017.
  */
-public class PeopleFragment extends BaseFragment implements IPeopleListView {
+public class PeopleFragment extends BaseFragment<PeopleListPresenter> implements IPeopleListView {
 
-    private PeopleListPresenter mPresenter;
     private RecyclerView mRecyclerView;
-
-
 
     @Override
     public int getLayoutInflater() {
