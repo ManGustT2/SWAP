@@ -10,9 +10,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by Администратор on 22.12.2016.
- */
 public class FilmListPresenter extends BasePresenter {
     private IFilmListView mView;
     private DBHelper mHelper;

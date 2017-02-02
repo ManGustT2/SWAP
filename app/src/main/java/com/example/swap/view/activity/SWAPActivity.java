@@ -14,15 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.swap.R;
+import com.example.swap.base.BaseFragment;
 import com.example.swap.view.films.FilmListFragment;
 
-public class SWAPActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class SWAPActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ISwapView{
     private static final String TAG = "TAG";
     private FragmentManager mFragmentManager;
     private Toolbar mToolbar;
     private ActionBarDrawerToggle mBarDrawerToggle;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
+    private SwapPresenter mSwapPresenter;
 
 
 
@@ -30,12 +32,12 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swap);
-
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
+        mSwapPresenter = new SwapPresenter(this);
         mNavigationView.setNavigationItemSelectedListener(this);
         mBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.openDrawer, R.string.closeDrawer);
         mDrawerLayout.addDrawerListener(mBarDrawerToggle);
@@ -71,8 +73,11 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        mSwapPresenter.onMenuItemClick(id);
         return true;
     }
+
+
 
 
     public void replaceFragment(Fragment fragment, boolean isBackStack) {
@@ -84,5 +89,10 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void onBackPressed(){
+    }
+
+    @Override
+    public void changeFragment(BaseFragment _fragment) {
+        replaceFragment(_fragment, false);
     }
 }

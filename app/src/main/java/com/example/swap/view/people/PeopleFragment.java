@@ -1,36 +1,41 @@
 package com.example.swap.view.people;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
 import com.example.swap.data.api.model.People;
-import com.example.swap.view.films.FilmListPresenter;
 
 import java.util.List;
 
 /**
  * Created by Администратор on 26.01.2017.
  */
-public class PeoleFragment extends BaseFragment implements IPeopleListView {
+public class PeopleFragment extends BaseFragment implements IPeopleListView {
 
     private PeopleListPresenter mPresenter;
     private RecyclerView mRecyclerView;
-    private RecycleViewAdapter mFilmRecycleViewAdapter;
+
 
 
     @Override
     public int getLayoutInflater() {
-        return 0;
+        return R.layout.fragment_list;
     }
 
     @Override
     public void findUI(View rootView) {
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
     }
 
     @Override
     public void setupUI() {
+//        mPresenter = new PeopleListPresenter(this, getActivity());
+//        mPresenter.getPeopleList();
 
     }
 
