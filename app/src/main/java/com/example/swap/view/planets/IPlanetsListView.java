@@ -1,5 +1,7 @@
 package com.example.swap.view.planets;
 
+import com.example.swap.data.api.model.Planets;
+
 import java.util.List;
 
 /**

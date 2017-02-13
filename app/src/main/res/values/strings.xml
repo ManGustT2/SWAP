@@ -16,6 +16,11 @@
     <string name="openDrawer">open_drawer</string>
     <string name="closeDrawer">close_drawer</string>
     <string name="action_logout">Logout</string>
+    <string name="name">name</string>
+    <string name="height">height</string>
+    <string name="mass">mass</string>
+    <string name="hair_color">hair_color</string>
+    <string name="skin_color">skin_color</string>
 
     <string name="action_clear_all">Clear All</string>
     <string name="action_mark_all_read">Mark All as Read</string>

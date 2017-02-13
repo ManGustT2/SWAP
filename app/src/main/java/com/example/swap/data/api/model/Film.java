@@ -5,7 +5,9 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Администратор on 14.12.2016.
  */
-public class Film {
+public class Film{
+
+
     private @SerializedName("title") String title;
     private @SerializedName("episode_id") int episodeid;
     private @SerializedName("opening_crawl") String opening_crawl;

@@ -8,14 +8,20 @@ import android.widget.Toast;
 import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
 import com.example.swap.data.api.model.Film;
+import com.example.swap.view.Interface.IListView;
+import com.example.swap.view.activity.SWAPActivity;
 import com.example.swap.view.adapters.FilmRecycleViewAdapter;
 import com.example.swap.view.listeners.ItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilmListFragment extends BaseFragment implements IFilmListView {
+
+public class FilmListFragment extends BaseFragment implements IListView {
+    private FilmListPresenter mPresenter;
+    private RecyclerView mRecyclerView;
     private FilmRecycleViewAdapter mFilmRecycleViewAdapter;
+    private SWAPActivity mSWAPActivity;
 
     private ItemClickListener<Film> mItemClickListener = new ItemClickListener<Film>() {
         @Override
@@ -37,9 +43,9 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
     public void findUI(View rootView) {
         mFilmRecycleViewAdapter = new FilmRecycleViewAdapter(mItemClickListener);
         mFilmRecycleViewAdapter.apply(new ArrayList<Film>());
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(mFilmRecycleViewAdapter);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(mFilmRecycleViewAdapter);
 
     }
 
@@ -49,8 +55,10 @@ public class FilmListFragment extends BaseFragment implements IFilmListView {
         presenter.getFilmList();
     }
 
+
+
     @Override
-    public void showListFilms(List<Film> items) {
+    public void showList(List items) {
         mFilmRecycleViewAdapter.update(items);
     }
 

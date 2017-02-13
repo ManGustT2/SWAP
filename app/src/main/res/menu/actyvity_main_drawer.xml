@@ -6,6 +6,7 @@
             android:id="@+id/nav_people"
             android:background="@color/colorBlack"
             android:title="@string/drawer_people"/>
+
         <item
             android:id="@+id/nav_planets"
             android:background="@color/colorBlack"
@@ -16,18 +17,30 @@
             android:background="@color/colorBlack"
             android:title="@string/drawer_item_films"/>
 
-
         <item
             android:id="@+id/nav_species"
             android:background="@color/colorBlack"
             android:title="@string/drawer_item_species"/>
-        />
+
+        <item
+            android:id="@+id/nav_planets"
+            android:title="@string/drawer_planets"
+            android:background="@color/colorBlack"/>
+
+        <item
+            android:id="@+id/nav_movies"
+            android:title="@string/drawer_item_films"
+            android:background="@color/colorBlack"/>
+
+        <item
+            android:id="@+id/nav_species"
+            android:title="@string/drawer_item_species"
+            android:background="@color/colorBlack"/>
 
         <item
             android:id="@+id/nav_vehicles"
             android:background="@color/colorBlack"
             android:title="@string/drawer_item_vehicles"/>
-        />
     </group>
 
 </menu>

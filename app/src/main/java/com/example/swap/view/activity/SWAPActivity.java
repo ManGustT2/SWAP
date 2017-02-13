@@ -17,7 +17,7 @@ import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
 import com.example.swap.view.people.PeopleFragment;
 
-public class SWAPActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ISwapView{
+public class SWAPActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ISwapView {
     private static final String TAG = "TAG";
     private FragmentManager mFragmentManager;
     private Toolbar mToolbar;
@@ -25,8 +25,6 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
     private SwapPresenter mSwapPresenter;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +50,13 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
 
         getSupportFragmentManager()
                 .addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-                mBarDrawerToggle.setDrawerIndicatorEnabled(getSupportFragmentManager().getBackStackEntryCount() == 0);
-                getSupportActionBar().setDisplayHomeAsUpEnabled(getSupportFragmentManager().getBackStackEntryCount() > 0);
-                mBarDrawerToggle.syncState();
-            }
-        });
+                    @Override
+                    public void onBackStackChanged() {
+                        mBarDrawerToggle.setDrawerIndicatorEnabled(getSupportFragmentManager().getBackStackEntryCount() == 0);
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(getSupportFragmentManager().getBackStackEntryCount() > 0);
+                        mBarDrawerToggle.syncState();
+                    }
+                });
 
         mFragmentManager = getSupportFragmentManager();
 
@@ -69,12 +67,16 @@ public class SWAPActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         mSwapPresenter.onMenuItemClick(id);
         return true;
     }
+
 
 
     public void replaceFragment(Fragment fragment, boolean isBackStack) {

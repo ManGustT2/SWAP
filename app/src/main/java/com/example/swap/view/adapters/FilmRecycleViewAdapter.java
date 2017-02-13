@@ -14,16 +14,13 @@ import com.example.swap.view.listeners.ItemClickListener;
 
 import java.util.List;
 
-/**
- * Created by Администратор on 15.12.2016.
- */
 public class FilmRecycleViewAdapter extends BaceRecycleViewAdapter<Film, FilmRecycleViewAdapter.ViewHolder> {
     private ItemClickListener<Film> mItemClickListener;
 
     public FilmRecycleViewAdapter(ItemClickListener<Film> itemClickListener) {
         super();
         mItemClickListener = itemClickListener;
-//        setHasStableIds();
+
     }
 
     @Override
@@ -38,10 +35,6 @@ public class FilmRecycleViewAdapter extends BaceRecycleViewAdapter<Film, FilmRec
         holder.bind(getItem(position));
     }
 
-//    @Override
-//    public long getItemId(int position) {
-//        return super.getItemId(position);
-//    }
 
     @Override
     public void update(List<Film> items) {
@@ -83,7 +76,6 @@ public class FilmRecycleViewAdapter extends BaceRecycleViewAdapter<Film, FilmRec
             mTitle.setText(film.getTitle());
             mDateReleace.setText(film.getRelease_date());
             mOpenCrawl.setText(film.getOpening_crawl());
-//            mItemView.setOnClickListener();
             linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
