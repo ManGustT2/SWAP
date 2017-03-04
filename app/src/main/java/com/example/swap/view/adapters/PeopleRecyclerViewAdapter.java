@@ -6,12 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.swap.R;
 import com.example.swap.base.BaceRecycleViewAdapter;
 import com.example.swap.data.api.model.People;
 import com.example.swap.view.listeners.ItemClickListener;
-
 import java.util.List;
 
 public class PeopleRecyclerViewAdapter extends BaceRecycleViewAdapter<People, PeopleRecyclerViewAdapter.ViewHolder> {
@@ -19,8 +17,11 @@ public class PeopleRecyclerViewAdapter extends BaceRecycleViewAdapter<People, Pe
     private ItemClickListener<People> mItemClickListener;
 
     public PeopleRecyclerViewAdapter(ItemClickListener<People> itemClicklLictener){
+
         super();
+
         mItemClickListener = itemClicklLictener;
+
     }
 
     @Override
@@ -28,6 +29,7 @@ public class PeopleRecyclerViewAdapter extends BaceRecycleViewAdapter<People, Pe
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.title_people, parent, false);
         return new ViewHolder(v);
+
     }
 
     @Override
@@ -44,6 +46,7 @@ public class PeopleRecyclerViewAdapter extends BaceRecycleViewAdapter<People, Pe
     }
     private People getItem(int position) {
         return getList().get(position);
+
     }
 
     @Override
@@ -61,15 +64,17 @@ public class PeopleRecyclerViewAdapter extends BaceRecycleViewAdapter<People, Pe
          private LinearLayout linearLayout;
          private View mItemView;
 
-
          public ViewHolder(View itemView) {
+
              super(itemView);
+
              mName = (TextView) itemView.findViewById(R.id.people_name);
              mHeight = (TextView) itemView.findViewById(R.id.people_height);
              mMass = (TextView) itemView.findViewById(R.id.people_mass);
              mHairColor = (TextView) itemView.findViewById(R.id.hair_color);
              linearLayout = (LinearLayout) itemView.findViewById(R.id.llItemContainer);
              mItemView = itemView;
+
          }
 
          void bind (final People people){

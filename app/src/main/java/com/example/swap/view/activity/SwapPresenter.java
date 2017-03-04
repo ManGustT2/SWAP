@@ -4,6 +4,7 @@ import com.example.swap.R;
 import com.example.swap.base.BasePresenter;
 import com.example.swap.view.films.FilmListFragment;
 import com.example.swap.view.people.PeopleFragment;
+import com.example.swap.view.planets.PlanetFragment;
 
 /**
  * Created by Администратор on 02.02.2017.
@@ -21,18 +22,11 @@ public class SwapPresenter extends BasePresenter {
             case R.id.nav_people:
                 mView.changeFragment(new PeopleFragment());
                 break;
-//            case R.id.nav_planets:
-//
-//                break;
             case R.id.nav_movies:
                 mView.changeFragment(new FilmListFragment());
                 break;
-//            case R.id.nav_species:
-//
-//                break;
-//            case R.id.nav_vehicles:
-//
-//                break;
+            case R.id.nav_planets:
+                mView.changeFragment(new PlanetFragment());
         }
     }
 }

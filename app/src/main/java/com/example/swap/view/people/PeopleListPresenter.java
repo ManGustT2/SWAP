@@ -1,12 +1,10 @@
 package com.example.swap.view.people;
 
 import android.content.Context;
-
 import com.example.swap.base.BasePresenter;
 import com.example.swap.data.api.model.People;
 import com.example.swap.data.api.model.response.ResponseModel;
 import com.example.swap.view.Interface.IListView;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

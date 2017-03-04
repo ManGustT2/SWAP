@@ -22,5 +22,4 @@ public class FilmDetailPresenter extends BasePresenter{
     public void getDetailFilm(){
         mFilmDetailView.showDetailFilm(mHelper.getDetailFilm(mFilmDetailView.getArgs()));
     }
-
 }

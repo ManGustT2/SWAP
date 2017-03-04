@@ -2,6 +2,7 @@ package com.example.swap.data.api.retrofit;
 
 import com.example.swap.data.api.model.Film;
 import com.example.swap.data.api.model.People;
+import com.example.swap.data.api.model.Planets;
 import com.example.swap.data.api.model.response.ResponseModel;
 
 import retrofit2.Call;
@@ -17,5 +18,8 @@ public interface RetrofitInterface {
 
     @GET("people/")
     Call<ResponseModel<People>> getPeople();
+
+    @GET("planets/")
+    Call<ResponseModel<Planets>> getPlanets();
 
 }

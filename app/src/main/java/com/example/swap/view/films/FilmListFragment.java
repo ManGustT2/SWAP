@@ -4,7 +4,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
-
 import com.example.swap.R;
 import com.example.swap.base.BaseFragment;
 import com.example.swap.data.api.model.Film;
